@@ -1,6 +1,7 @@
 const stripe = require('stripe')(process.env.paymentKey);
 const Bookings = require("../models/bookingModel");
 const Events = require("../models/eventModel");
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 exports.bookEvent = async (req, res) => {
     const { eventId, ticketsBooked } = req.body;
@@ -128,8 +129,8 @@ exports.buyEventTicket = async (req, res) => {
             line_items,
             mode: "payment",
 
-            success_url: "http://localhost:5173/payment-success",
-            cancel_url: "http://localhost:5173/payment-failed",
+            success_url: `${FRONTEND_URL}/payment-success`,
+            cancel_url: `${FRONTEND_URL}/payment-failed`,
         });
 
         await Events.findByIdAndUpdate(event._id, {
