@@ -1,4 +1,4 @@
-const stripe = require('stripe')('sk_test_51SplwxHIQ8EC8cq4Rn3bXXSuuwAr444fqDNxxN6Q1Xxf0SRrcwPkEI0RHrYMNAOnYMHzSwRmnzsvWZ315AOOAgNa00NxZvjhYb');
+const stripe = require('stripe')(process.env.paymentKey);
 const Bookings = require("../models/bookingModel");
 const Events = require("../models/eventModel");
 
